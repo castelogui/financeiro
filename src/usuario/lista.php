@@ -1,4 +1,12 @@
-<h1>Listar Usuários</h1>
+<div class="row">
+  <div class="col-10">
+    <h1>Listar Usuários</h1>
+  </div>
+  <div class="col-2">
+    <a class="btn btn-primary btn-lg btn-block" href="?page=cadastrarUsuario">Novo</a>
+  </div>
+</div>
+<br>
 <?php
 $sql = "SELECT * FROM usuario";
 $res = $conn->query($sql);

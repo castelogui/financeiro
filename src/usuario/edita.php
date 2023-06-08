@@ -1,4 +1,12 @@
-<h1>Editar Usuario</h1>
+<div class="row">
+  <div class="col-10">
+    <h1>Editar Usuario</h1>
+  </div>
+  <div class="col-2">
+    <a class="btn btn-primary btn-lg btn-block" href="?page=listarUsuario">Voltar</a>
+  </div>
+</div>
+<br>
 <?php
 $sql = "SELECT * FROM usuario WHERE idUsuario = {$_REQUEST["idUsuario"]}";
 $res = $conn->query($sql);
@@ -35,28 +43,13 @@ $row = $res->fetch_object();
     <label for="senha">Status</label>
     <div class="btn-group btn-group-toggle" data-toggle="buttons">
       <?php
-      if ($row->statusUsuario == 1) {
-        print "<label class='btn btn-success active'";
-      } else {
-        print "<label class='btn btn-light'";
-      }
-      print "onclick=\"location.href='?page=salvarUsuario&acao=ativar&idUsuario={$row->idUsuario}';\">
-              <a>
-              Ativar
-              </a>
-            </label>"
-      ?>
-      <?php
-      if ($row->statusUsuario == 0) {
-        print "<label class='btn btn-warning active'";
-      } else {
-        print "<label class='btn btn-light'";
-      }
-      print "onclick=\"location.href='?page=salvarUsuario&acao=inativar&idUsuario={$row->idUsuario}';\"
-            ><a>
-              Inativar
-              </a>
-            </label>"
+      $status = $row->statusUsuario;
+      $funcao = $status == 0 ? 'ativar' : 'inativar';
+      print "<div class='switch'>
+            <input type='checkbox' id='toggle' class='switch-checkbox'";
+      $status == 1 ? print "checked>" : print ">";
+      print "<label onclick=\"location.href='?page=salvarUsuario&acao={$funcao}&idUsuario={$row->idUsuario}';\"
+             for='toggle' class='switch-label'></label>"
       ?>
     </div>
   </div>

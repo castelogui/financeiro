@@ -1,4 +1,12 @@
-<h1>Cadastrar Usuario</h1>
+<div class="row">
+  <div class="col-10">
+    <h1>Cadastrar Usuario</h1>
+  </div>
+  <div class="col-2">
+    <a class="btn btn-primary btn-lg btn-block" href="?page=listarUsuario">Voltar</a>
+  </div>
+</div>
+<br>
 <form action="?page=salvarUsuario" method="POST">
   <input type="hidden" name="acao" value="cadastrar">
   <div class="mb-3">
