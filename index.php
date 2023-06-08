@@ -8,6 +8,7 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="./src/util/style-btn-switch.css">
   <title>Cadastro de Usuário</title>
 </head>
 
@@ -18,19 +19,10 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Alterna navegação">
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Usuário
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="?page=listarUsuario">Listar</a>
-              <a class="dropdown-item" href="?page=cadastrarUsuario">Cadastrar</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Permissões</a>
-            </div>
+          <li class="nav-item">
+            <a class="nav-link" href="?page=listarUsuario">Usuários</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Contas</a>
