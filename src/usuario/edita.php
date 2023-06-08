@@ -58,10 +58,38 @@ $row = $res->fetch_object();
       <div class="col col-lg-2">
         <button type="submit" class="btn btn-success">Salvar</button>
       </div>
+      <!-- Botão para acionar modal -->
       <div class='col col-lg-2'>
         <?php
-        print "<button class='btn btn-danger' onclick=\"location.href='?page=salvarUsuario&acao=excluir&idUsuario={$row->idUsuario}';\">Excluir</button>"
+        print "<button type='button' class='btn btn-danger' 
+              data-toggle='modal' data-target='#modalExcludeUser'>Excluir</button>"
         ?>
+      </div>
+      <!-- Modal -->
+      <div class="modal fade" id="modalExcludeUser" tabindex="-1" role="dialog" aria-labelledby="excludeUserModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="excludeUserModalLabel">Confirme</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <?php
+              print "Tem certeza que deseja excluir o usuário <strong>{$row->username}</strong>?";
+              print "<p>Essa ação é irreversível!!</p";
+              ?>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              <?php
+              print "<button onclick=\"location.href='?page=salvarUsuario&acao=excluir&idUsuario={$row->idUsuario}';\"
+                      type='button' class='btn btn-danger'>Excluir</button>"
+              ?>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
