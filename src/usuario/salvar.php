@@ -6,7 +6,7 @@ switch ($_REQUEST["acao"]) {
     $dtNasc = $_POST["dtNasc"];
     $username = $_POST["username"];
     $email = $_POST["email"];
-    $senha = md5($_POST["senha"]);
+    $senha = $_POST["senha"];
 
     $sql = "INSERT INTO usuario (nomeUsuario, sobrenomeUsuario, dtNascUsuario, username, emailUsuario, senhaUsuario) VALUES ('{$nome}', '{$sobrenome}', '{$dtNasc}', '{$username}', '{$email}', '{$senha}')";
 
@@ -29,7 +29,8 @@ switch ($_REQUEST["acao"]) {
     $dtNasc = $_POST["dtNasc"];
     $username = $_POST["username"];
     $email = $_POST["email"];
-    $senha = md5($_POST["senha"]);
+    $senha = $_POST["senha"];
+    $status = $_POST["status"];
 
     $sql = "UPDATE usuario SET
             nomeUsuario='{$nome}', 
@@ -38,10 +39,11 @@ switch ($_REQUEST["acao"]) {
             username='{$username}', 
             emailUsuario='{$email}', 
             senhaUsuario='{$senha}',
+            statusUsuario='{$status}'
             WHERE idUsuario ={$_REQUEST['idUsuario']}";
 
 
-    $res = $conn->query($sql);
+    $res = $conn->query($sql) or die($conn->error);
 
     if ($res == true) {
       print "<script>alert('Editado com sucesso: {$username}');</script>";
@@ -67,7 +69,7 @@ switch ($_REQUEST["acao"]) {
     $sql = "UPDATE usuario SET statusUsuario=0 WHERE idUsuario ={$_REQUEST['idUsuario']}";
 
     $res = $conn->query($sql);
-    
+
     print "<script>location.href='?page=editarUsuario&idUsuario={$_REQUEST['idUsuario']}';</script>";
 
     break;
