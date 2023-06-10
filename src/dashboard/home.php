@@ -1,3 +1,9 @@
+<?php
+if (empty($_SESSION)) {
+  print "<script>location.href='?page=index'</script>";
+}
+?>
+
 <div class="jumbotron">
   <h1 class="display-4">Olá!</h1>
   <p class="lead">Este sistema está sendo desenvolvido para proporcionar um controle financeiro eficiente e manter suas finanças sempre em ordem. </p>
