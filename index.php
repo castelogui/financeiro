@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -21,16 +24,53 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="?page=listarUsuario">Usuários</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contas</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Receitas</a>
-          </li>
+          <?php
+          if (!empty($_SESSION)) {
+            print '
+                <li class="nav-item">
+                  <a class="nav-link" href="?page=listarUsuario">Usuários</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Contas</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Receitas</a>
+                </li>
+              ';
+          }
+          ?>
         </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <div class="btn-toolbar" role="toolbar">
+            <div class="btn-group mr-2" role="group">
+              <?php
+              if (empty($_SESSION)) {
+                print "<a class='btn btn-success my-2 my-sm-0' 
+                onclick=\"location.href='?page=index';\">Entrar</a>";
+              } else {
+                print "
+                <div class='btn-group' role='group'>
+                  <button id='btnGroupDrop1' type='button' class='btn btn-secondary dropdown-toggle' 
+                  data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                    <img src='https://avatars.githubusercontent.com/u/48875867?s=96&amp;v=4' 
+                    alt='@castelogui' width='28'  class='rounded mr-3'>
+                    {$_SESSION['username']}
+                  </button>
+                  <div class='dropdown-menu' aria-labelledby='btnGroupDrop1'>
+                    <a class='dropdown-item' href='#'>Meu Perfil</a>
+                    <a class='dropdown-item' href='#'>Definições</a>
+                    <div class='container'>
+                      <a class='btn btn-outline-danger btn-block my-2 my-sm-0' type='submit'
+                      onclick=\"location.href='?page=logout';\">Sair</a>
+                    </div>
+                  </div>
+                </div>";
+              }
+
+              ?>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </nav>
@@ -52,9 +92,17 @@
           case "editarUsuario":
             include("./src/usuario/edita.php");
             break;
+          case "index":
+            include("./src/session/index.php");
+            break;
+          case "login":
+            include("./src/session/login.php");
+            break;
+          case "logout":
+            include("./src/session/logout.php");
+            break;
           default:
             include("./src/dashboard/home.php");
-            //print("<h1>Bem vindos ao sistema de controle financeiro!</h1>");
         }
         ?>
       </div>
