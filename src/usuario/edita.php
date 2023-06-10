@@ -46,10 +46,10 @@ $row = $res->fetch_object();
       $status = $row->statusUsuario;
       $funcao = $status == 0 ? 'ativar' : 'inativar';
       print "<div class='switch'>
-            <input type='checkbox' id='toggle' class='switch-checkbox'";
+            <input type='checkbox' id='toggle' name='status' class='switch-checkbox'";
       $status == 1 ? print "checked>" : print ">";
       print "<label onclick=\"location.href='?page=salvarUsuario&acao={$funcao}&idUsuario={$row->idUsuario}';\"
-             for='toggle' class='switch-label'></label>"
+      for='toggle' class='switch-label'></label>";
       ?>
     </div>
   </div>
@@ -60,10 +60,9 @@ $row = $res->fetch_object();
       </div>
       <!-- Botão para acionar modal -->
       <div class='col col-lg-2'>
-        <?php
-        print "<button type='button' class='btn btn-danger' 
-              data-toggle='modal' data-target='#modalExcludeUser'>Excluir</button>"
-        ?>
+        <button type='button' class='btn btn-danger' data-toggle='modal' data-target='#modalExcludeUser'>
+          Excluir
+        </button>
       </div>
       <!-- Modal -->
       <div class="modal fade" id="modalExcludeUser" tabindex="-1" role="dialog" aria-labelledby="excludeUserModalLabel" aria-hidden="true">
