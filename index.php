@@ -52,9 +52,9 @@ session_start();
                 <div class='btn-group' role='group'>
                   <button id='btnGroupDrop1' type='button' class='btn btn-secondary dropdown-toggle' 
                   data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
-                    <img src='https://avatars.githubusercontent.com/u/48875867?s=96&amp;v=4' 
-                    alt='@castelogui' width='28'  class='rounded mr-3'>
-                    {$_SESSION['username']}
+                    <img src='../../assets/images/element/perfil-demo.svg' 
+                    alt='image user' width='34' class='rounded mr-3'>
+                    @{$_SESSION['username']}
                   </button>
                   <div class='dropdown-menu' aria-labelledby='btnGroupDrop1'>
                     <a class='dropdown-item' href='#'>Meu Perfil</a>
