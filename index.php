@@ -54,7 +54,7 @@ session_start();
                   <button id='btnGroupDrop1' type='button' class='btn btn-secondary dropdown-toggle' 
                   data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                     <img src='../../assets/images/element/perfil-demo.svg' 
-                    alt='image user' width='34' class='rounded mr-3'>
+                    alt='image user' width='25' class='rounded mr-3'>
                     @{$_SESSION['username']}
                   </button>
                   <div class='dropdown-menu' aria-labelledby='btnGroupDrop1'>
@@ -72,6 +72,10 @@ session_start();
             </div>
           </div>
         </form>
+        <div class='switch'>
+          <input type='checkbox' id='toggle' name='status' class='switch-checkbox'>
+          <label for='toggle' class='switch-label'></label>
+        </div>
       </div>
     </div>
   </nav>
