@@ -18,7 +18,7 @@ if ($qtd > 0) {
   $_SESSION["username"] = $row->username;
   $_SESSION["nome"] = $row->nomeUsuario;
   $_SESSION["email"] = $row->emailUsuario;
-  $_SESSION["id"] = $row->idUsername;
+  $_SESSION["id"] = $row->idUsuario;
   $_SESSION["sobrenome"] = $row->sobrenomeUsuario;
   $_SESSION["dtNasc"] = $row->dtNascUsuario;
   $_SESSION["status"] = $row->statusUsuario;
