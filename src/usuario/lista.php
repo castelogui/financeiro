@@ -1,4 +1,16 @@
 <div class="row">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item" aria-current="page">
+        <a class="btn btn-sm btn-link" onclick="location.href='?page=listarUsuario'">Usuarios</a>
+      </li>
+      <li class="breadcrumb-item active">
+        <a class="btn btn-sm btn-link" onclick="location.href='#'">Perfis</a>
+      </li>
+    </ol>
+  </nav>
+</div>
+<div class="row">
   <div class="col-10">
     <h1>Usuários</h1>
   </div>
@@ -61,6 +73,11 @@ if ($qtd > 0) {
   print "</table>
         </div>";
 } else {
-  print "<p class='alert alert-danger'>Não foi encontrado nenhum usuário.</p>";
+  print "
+      <div class='card alert alert-danger'>
+        <div class='card-body'>
+          <h5 class='card-title card-danger'>Nenhum usuario Encontrado!</h5>
+        </div>
+      </div>";
 }
 ?>
