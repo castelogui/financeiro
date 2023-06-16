@@ -1,9 +1,13 @@
 <div class="row">
   <div class="col-10">
-    <h1>Listar Usuários</h1>
+    <h1>Usuários</h1>
   </div>
   <div class="col-2">
-    <a class="btn btn-primary btn-lg btn-block" href="?page=cadastrarUsuario">Novo</a>
+    <?php
+    include("cadastra.php");
+    print $botaoCadastraUsuario;
+    print $modalCadastraUsuario;
+    ?>
   </div>
 </div>
 <br>
@@ -40,9 +44,10 @@ if ($qtd > 0) {
             </td>';
     }
     print  "<td>
-              <button onclick=\"location.href='?page=editarUsuario&idUsuario={$row->idUsuario}';\" class='btn btn-sm btn-primary'>Editar</button>
-            </td>              
-          </tr>";
+               <button onclick=\"location.href='?page=editarUsuario&idUsuario={$row->idUsuario}';\"
+               class='btn btn-block btn-primary'><i class='fa-solid fa-pencil fa-fade'></i> Editar</button>
+             </td>                  
+           </tr>";
   };
   print  "<tr class='thead-dark'>
             <th>#</th>
