@@ -44,31 +44,23 @@ session_start();
         <form class="form-inline my-2 my-lg-0">
           <div class="btn-toolbar" role="toolbar">
             <div class="btn-group mr-2" role="group">
-              <?php
-              if (empty($_SESSION)) {
-                print "<a class='btn btn-success my-2 my-sm-0' 
-                onclick=\"location.href='?page=index';\">Entrar</a>";
-              } else {
-                print "
-                <div class='btn-group' role='group'>
-                  <button id='btnGroupDrop1' type='button' class='btn btn-secondary dropdown-toggle' 
-                  data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
-                    <img src='../../assets/images/element/perfil-demo.svg' 
-                    alt='image user' width='25' class='rounded mr-3'>
-                    @{$_SESSION['username']}
+              <?php if (empty($_SESSION)) : ?>
+                <a class="btn btn-success my-2 my-sm-0" onclick="location.href='?page=index';">Entrar</a>
+              <?php else : ?>
+                <div class="btn-group" role="group">
+                  <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="../../assets/images/element/perfil-demo.svg" alt="image user" width="25" class="rounded mr-3">
+                    <?php echo '@' . $_SESSION['username']; ?>
                   </button>
-                  <div class='dropdown-menu' aria-labelledby='btnGroupDrop1'>
-                    <a class='dropdown-item' href='#'>Meu Perfil</a>
-                    <a class='dropdown-item' href='#'>Definições</a>
-                    <div class='container'>
-                      <a class='btn btn-outline-danger btn-block my-2 my-sm-0' type='submit'
-                      onclick=\"location.href='?page=logout';\">Sair</a>
+                  <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                    <a class="dropdown-item" href="#">Meu Perfil</a>
+                    <a class="dropdown-item" href="#">Definições</a>
+                    <div class="container">
+                      <a class="btn btn-outline-danger btn-block my-2 my-sm-0" type="submit" onclick="location.href='?page=logout';">Sair</a>
                     </div>
                   </div>
-                </div>";
-              }
-
-              ?>
+                </div>
+              <?php endif; ?>
             </div>
           </div>
         </form>
