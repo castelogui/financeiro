@@ -1,0 +1,11 @@
+{
+  "name": "castelogui/financeiro",
+  "description": "Sistema de controle financeiro.",
+  "authors": [
+    {
+      "name": "Guilherme Castelo",
+      "email": "guilhermecastelo.mail@gmail.com"
+    }
+  ],
+  "license": "MIT"
+}
