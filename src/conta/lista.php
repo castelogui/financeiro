@@ -43,11 +43,8 @@ if ($qtd > 0) {
 
     $saldoFormated = number_format($row->saldoConta, 2, ',', '.');
 
-    $resUsuario1 = $conn->query($sqlUsuario);
-    while ($rowUsuarioConta = $resUsuario1->fetch_object()) {
-      if ($rowUsuarioConta->idUsuario == $row->Usuario_idUsuario) {
-        $userConta = $rowUsuarioConta;
-      }
+    while ($rowUC = $resUsuario->fetch_object()) {
+      $rowUC->idUsuario == $row->Usuario_idUsuario ? $userConta = $rowUC : null;
     }
 
     $cardsHTML .= <<<HTML
@@ -190,11 +187,13 @@ if ($qtd > 0) {
       <div class="modal-header">
         <div class="mb-3">
           <h2 class="modal-title" id="TituloModalEditaConta">Detalhes Conta </h2>
-          <label for="usuario">Usuario</label>
+          <label for="usuario">
+            Usuario: <span class="badge bg-primary">Nome do Usuario</span>
+          </label>
         </div>
-        <div class="btn-toolbar"  role="toolbar">
+        <div class="btn-toolbar" role="toolbar">
           <div class="btn-group m-2" role="group">
-            <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal" aria-label="Fechar">
+            <button onclick="location.href='?page=editarConta&idConta='" type="button" class="btn btn-sm btn-primary" data-dismiss="modal" aria-label="Fechar">
               <span aria-hidden="true"><i class="fa-solid fa-pen-to-square"></i></span>
             </button>
           </div>
@@ -209,50 +208,84 @@ if ($qtd > 0) {
         <input type="hidden" name="acao" value="cadastrarConta">
         <div class="row">
           <div class="col-md-6 mb-3">
-            <label for="nomeConta">Nome da Conta</label>
+            <label for="nomeConta">
+              Conta: <span class="badge bg-primary">Nome</span>
+            </label>
           </div>
           <div class="col-md-6 mb-3">
-            <label for="categoria">Categoria Conta</label>
+            <label for="categoria">
+              Categoria: <span class="badge bg-primary">Categoria</span>
+            </label>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6 mb-3">
-            <label for="cor">Cor</label>
+            <label for="cor">
+              Cor: <span class="badge bg-primary">Cor</span>
+            </label>
           </div>
           <div class="col-md-6 mb-3">
-            <label for="saldo">Saldo</label>
+            <label for="saldo">
+              Saldo: <span class="badge bg-primary">R$ 0,00</span>
+            </label>
           </div>
         </div>
         <table class="table">
-          <h4>Extrato</h4>
+          <form class="form-inline my-2 my-lg-0">
+            <div class="row">
+              <h4>Extrato</h4>
+              <div class="input-group mb-3">
+                <select class="form-select text-bg-primary">
+                  <option selected>Filtrar</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+                <input type="date" class="form-control" name="" id="">
+                <span class="input-group-text">-</span>
+                <input type="date" class="form-control" name="" id="">
+                <button class="btn btn-primary" type="button" id="button-addon2">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+              </div>
+            </div>
+          </form>
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">Valor</th>
-              <th scope="col">Data Hora</th>
               <th scope="col">Categoria</th>
+              <th scope="col">Data Hora</th>
+              <th scope="col">Valor</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <th scope="row">8</th>
-              <td>R$ 23,80</td>
-              <td>02 Jun 23 - 14:59</td>
               <td>Mercado</td>
+              <td>02 Jun 23 - 14:59</td>
+              <td>R$ 23,80</td>
             </tr>
             <tr>
               <th scope="row">7</th>
-              <td>R$ 13,46</td>
-              <td>01 Jun 23 - 07:33</td>
               <td>Padaria</td>
+              <td>01 Jun 23 - 07:33</td>
+              <td>R$ 13,46</td>
             </tr>
             <tr>
               <th scope="row">6</th>
-              <td>R$ 143</td>
-              <td>01 Jun 23 - 19:41</td>
               <td>Luz</td>
+              <td>01 Jun 23 - 19:41</td>
+              <td>R$ 143</td>
             </tr>
           </tbody>
+          <tfooter>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Categoria</th>
+              <th scope="col">Data Hora</th>
+              <th scope="col">R$ 320.43</th>
+            </tr>
+          </tfooter>
         </table>
       </div>
       <div class="modal-footer">
