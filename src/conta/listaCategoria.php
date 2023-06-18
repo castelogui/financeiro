@@ -87,7 +87,7 @@ if ($qtdCategoria > 0) {
         <h2 class="modal-title" id="TituloModalCadastrarCategoria">
           Cadastrar Categoria
         </h2>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+        <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal" aria-label="Fechar">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -133,7 +133,7 @@ if ($qtdCategoria > 0) {
         <h2 class="modal-title" id="TituloModalEditarCategoria">
           Editar Categoria
         </h2>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+        <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal" aria-label="Fechar">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
