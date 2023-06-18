@@ -36,21 +36,28 @@ $resUsuario = $conn->query($sqlUsuario);
 $qtdUsuario = $resUsuario->num_rows;
 
 if ($qtd > 0) {
-  $cardsHTML = '<div class="row row-cols-1 row-cols-md-3 g-3">';
+  $cardsHTML = '<div class="row row-cols-1 row-cols-md-3 g-3" >';
 
   while ($row = $res->fetch_object()) {
     $cor = $row->corConta;
 
     $saldoFormated = number_format($row->saldoConta, 2, ',', '.');
 
+    $resUsuario1 = $conn->query($sqlUsuario);
+    while ($rowUsuarioConta = $resUsuario1->fetch_object()) {
+      if ($rowUsuarioConta->idUsuario == $row->Usuario_idUsuario) {
+        $userConta = $rowUsuarioConta;
+      }
+    }
+
     $cardsHTML .= <<<HTML
     <div class="col card-group">
-        <div class="card btn text-bg-{$cor} " data-toggle="modal" data-target="#modalDetalhesConta">
+        <div class="card btn alert alert-{$cor}" data-toggle="modal" data-target="#modalDetalhesConta">
           <div class="card-body">
             <h5 class="card-title">{$row->nomeConta}</h5>
             <div class="row">
               <div class="col">
-                <p class="col card-text">@usuario</p>
+                <p class="col card-text">@{$userConta->username}</p>
               </div>
               <div class="col">
                 <p class="col card-text">R$ $saldoFormated</p>
@@ -82,7 +89,7 @@ if ($qtd > 0) {
     <form class="modal-content" action="?page=salvarConta" method="POST">
       <div class="modal-header">
         <h2 class="modal-title" id="TituloModalCadastraConta">Cadastrar Conta</h2>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+        <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal" aria-label="Fechar">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -122,12 +129,19 @@ if ($qtd > 0) {
           <div class="input-group mb-3">
             <select name="idUsuario" class="form-select">
               <?php
+              $resUsuario = $conn->query($sqlUsuario);
+              $qtdUsuario = $resUsuario->num_rows;
               print '<option selected>---</option>';
               if ($qtdUsuario > 0) {
                 while ($rowUsuario = $resUsuario->fetch_object()) {
-                  print "<option value='{$rowUsuario->idUsuario}'>
-                  {$rowUsuario->nomeUsuario}
-                  </option>";
+                  $value = $rowUsuario->idUsuario;
+                  $nome = $rowUsuario->nomeUsuario . ' ' . $rowUsuario->sobrenomeUsuario;
+                  $id = $rowUsuario->idUsuario;
+                  echo <<<HTML
+                    <option value="{$value}">
+                     #{$id} {$nome}
+                    </option>
+                  HTML;
                 }
               } else {
                 print '<option>Nenhuma Usuario Cadastrado</option>';
@@ -160,6 +174,77 @@ if ($qtd > 0) {
             </div>
           </div>
         </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <button type="submit" class="btn btn-success">Cadastrar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<div class="modal fade" id="modalDetalhesConta" tabindex="-1" role="dialog" aria-labelledby="TituloModalEditaConta" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <form class="modal-content" action="?page=salvarConta" method="POST">
+      <div class="modal-header">
+        <div class="mb-3">
+          <h2 class="modal-title" id="TituloModalEditaConta">Detalhes Conta </h2>
+          <label for="usuario">Usuario</label>
+        </div>
+        <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" name="acao" value="cadastrarConta">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="nomeConta">Nome da Conta</label>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="categoria">Categoria Conta</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="cor">Cor</label>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="saldo">Saldo</label>
+          </div>
+        </div>
+        <table class="table">
+          <h4>Extrato</h4>
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Valor</th>
+              <th scope="col">Data Hora</th>
+              <th scope="col">Categoria</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">8</th>
+              <td>R$ 23,80</td>
+              <td>02 Jun 23 - 14:59</td>
+              <td>Mercado</td>
+            </tr>
+            <tr>
+              <th scope="row">7</th>
+              <td>R$ 13,46</td>
+              <td>01 Jun 23 - 07:33</td>
+              <td>Padaria</td>
+            </tr>
+            <tr>
+              <th scope="row">6</th>
+              <td>R$ 143</td>
+              <td>01 Jun 23 - 19:41</td>
+              <td>Luz</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
