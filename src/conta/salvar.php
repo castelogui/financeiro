@@ -7,8 +7,8 @@ switch ($_REQUEST["acao"]) {
     $corConta = $_POST["cor"];
     $saldoConta = $_POST["saldoConta"];
 
-   $sql = "INSERT INTO conta (CategoriaConta_idCategoriaConta, Usuario_idUsuario, nomeConta, corConta, saldoConta) 
-   VALUES ('{$CategoriaConta_idCategoriaConta}', '{$Usuario_idUsuario}', '{$nomeConta}', '{$corConta}', '{$saldoConta}')";
+   $sql = "INSERT INTO conta (CategoriaConta_idCategoriaConta, Usuario_idUsuario, nomeConta, corConta, saldoConta, statusConta) 
+   VALUES ('{$CategoriaConta_idCategoriaConta}', '{$Usuario_idUsuario}', '{$nomeConta}', '{$corConta}', '{$saldoConta}', 1)";
 
     $res = $conn->query($sql) or die($conn->error);
 
