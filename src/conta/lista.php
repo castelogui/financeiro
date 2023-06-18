@@ -192,9 +192,18 @@ if ($qtd > 0) {
           <h2 class="modal-title" id="TituloModalEditaConta">Detalhes Conta </h2>
           <label for="usuario">Usuario</label>
         </div>
-        <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal" aria-label="Fechar">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <div class="btn-toolbar"  role="toolbar">
+          <div class="btn-group m-2" role="group">
+            <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal" aria-label="Fechar">
+              <span aria-hidden="true"><i class="fa-solid fa-pen-to-square"></i></span>
+            </button>
+          </div>
+          <div class="btn-group m-2" role="group">
+            <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal" aria-label="Fechar">
+              <span aria-hidden="true"><i class="fa-solid fa-xmark"></i></span>
+            </button>
+          </div>
+        </div>
       </div>
       <div class="modal-body">
         <input type="hidden" name="acao" value="cadastrarConta">
