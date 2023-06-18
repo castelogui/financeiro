@@ -74,7 +74,7 @@ $theme = "<script>localStorage.getItem('theme')</script>";
         <?php
         include("./src/database/config.php");
 
-        $pages = array(
+        $pages = [
           "cadastrarUsuario" => "./src/usuario/cadastra.php",
           "listarUsuario" => "./src/usuario/lista.php",
           "salvarUsuario" => "./src/usuario/salvar.php",
@@ -84,8 +84,9 @@ $theme = "<script>localStorage.getItem('theme')</script>";
           "logout" => "./src/session/logout.php",
           "listarConta" => "./src/conta/lista.php",
           "listarCategoria" => "./src/conta/listaCategoria.php",
-          "salvarConta" => "./src/conta/salvar.php"
-        );
+          "salvarConta" => "./src/conta/salvar.php",
+          "editarConta" => "./src/conta/editConta.php",
+        ];
 
         $page = @$_REQUEST["page"];
         if (array_key_exists($page, $pages)) {
