@@ -30,7 +30,7 @@ switch ($_REQUEST["acao"]) {
     $username = $_POST["username"];
     $email = $_POST["email"];
     $senha = $_POST["senha"];
-    $status = $_POST["status"];
+    $status = $_POST["status"] == "on" ? 1 : 0;
 
     $sql = "UPDATE usuario SET
             nomeUsuario='{$nome}', 
@@ -42,17 +42,15 @@ switch ($_REQUEST["acao"]) {
             statusUsuario='{$status}'
             WHERE idUsuario ={$_REQUEST['idUsuario']}";
 
-
     $res = $conn->query($sql) or die($conn->error);
 
     if ($res == true) {
-      print "<script>alert('Editado com sucesso: {$username}');</script>";
+      //print "<script>alert('Editado com sucesso: {$username}');</script>";
       print "<script>location.href='?page=listarUsuario';</script>";
     } else {
       print "<script>alert('Não foi possível editar usuário: {$username}');</script>";
       print "<script>location.href='?page=listarUsuario';</script>";
     }
-
 
     break;
 

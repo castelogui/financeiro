@@ -48,7 +48,7 @@ $row = $res->fetch_object();
   <div class="mb-3">
     <div class="form-check form-check-reverse form-switch text-center">
       <label for="senha">Status</label>
-      <input class="form-check-input btn btn-danger btn-block" name="status" type="checkbox" role="switch" id="flexSwitchCheck">
+      <input class="form-check-input btn btn-danger btn-block" name="status" <?php $row->statusUsuario == 1 ? print "checked" : "" ?> type="checkbox">
     </div>
   </div>
   <div class="container ">
