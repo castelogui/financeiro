@@ -23,41 +23,46 @@
 <br>
 
 <?php
-$sql = "SELECT * FROM conta";
-$res = $conn->query($sql);
-$qtd = $res->num_rows;
+include('src/conta/sqls.php');
+// seleciona o tema atual da session
+$theme = "<script>localStorage.getItem('theme')</script>";
+?>
 
-$sqlCategoria = "SELECT * FROM categoriaConta";
-$resCategoria = $conn->query($sqlCategoria);
-$qtdCategoria = $resCategoria->num_rows;
+<style>
+  .card:hover {
+    transform: scale(1.06);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 1);
+    transition: all 0.2s ease-in-out;
+  }
+</style>
 
-$sqlUsuario = "SELECT * FROM usuario";
-$resUsuario = $conn->query($sqlUsuario);
-$qtdUsuario = $resUsuario->num_rows;
+<?php if ($qtd > 0) : ?>
+  <div class="row row-cols-1 row-cols-md-3 g-3">
+    <?php
+    while ($row = $res->fetch_object()) {
+      $cor = $row->corConta;
 
-if ($qtd > 0) {
-  $cardsHTML = '<div class="row row-cols-1 row-cols-md-3 g-3" >';
+      $saldoFormated = number_format($row->saldoConta, 2, ',', '.');
 
-  while ($row = $res->fetch_object()) {
-    $cor = $row->corConta;
-
-    $saldoFormated = number_format($row->saldoConta, 2, ',', '.');
-
-    while ($rowUC = $resUsuario->fetch_object()) {
-      $rowUC->idUsuario == $row->Usuario_idUsuario ? $userConta = $rowUC : null;
-    }
-
-    $cardsHTML .= <<<HTML
-    <div class="col card-group">
-        <div class="card btn alert alert-{$cor}" data-toggle="modal" data-target="#modalDetalhesConta">
+      while ($rowUC = $resUsuario->fetch_object()) {
+        $rowUC->idUsuario == $row->Usuario_idUsuario ? $userConta = $rowUC->username : null;
+      }
+    ?>
+      <div class="col card-group">
+        <div class="card btn btn-lg alert alert-<?php echo $cor ?>" data-toggle="modal" data-target="#modalDetalhesConta">
           <div class="card-body">
-            <h5 class="card-title">{$row->nomeConta}</h5>
+            <h4 class="card-title">
+              <?php echo $row->nomeConta ?>
+            </h4>
+            <div class="badge bg-<?php echo $cor ?>">
+              categoria
+            </div>
             <div class="row">
               <div class="col">
-                <p class="col card-text">@{$userConta->username}</p>
+                <p class="col card-text"><?php echo "@" . $userConta ?></p>
               </div>
               <div class="col">
-                <p class="col card-text">R$ $saldoFormated</p>
+                <p class="col card-text"><?php echo "R$" . $saldoFormated ?></p>
               </div>
             </div>
           </div>
@@ -65,21 +70,16 @@ if ($qtd > 0) {
             <small class="text-muted">Atualizados 3 minutos atrás</small>
           </div>
         </div>
-    </div>
-  HTML;
-  }
-
-  echo $cardsHTML;
-} else {
-  echo <<<HTML
-    <div class='card alert alert-danger'>
-      <div class='card-body'>
-        <h5 class='card-title card-danger'>Nenhuma Conta Encontrada!</h5>
       </div>
+    <?php } ?>
+  </div>
+<?php else : ?>
+  <div class='card alert alert-danger'>
+    <div class='card-body'>
+      <h5 class='card-title card-danger'>Nenhuma Conta Encontrada!</h5>
     </div>
-  HTML;
-}
-?>
+  </div>
+<?php endif; ?>
 
 <div class="modal fade" id="modalCadastraConta" tabindex="-1" role="dialog" aria-labelledby="TituloModalCadastraConta" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -100,22 +100,22 @@ if ($qtd > 0) {
           <label for="categoria">Categoria Conta</label>
           <div class="input-group mb-3">
             <select name="idCategoriaConta" class="form-select">
+              <option selected>---</option>
               <?php
-              echo '<option selected>---</option>';
-              if ($qtdCategoria > 0) {
+              if ($qtdCategoria > 0) :
                 while ($rowCategoria = $resCategoria->fetch_object()) {
                   $icone = $rowCategoria->iconeCategoriaConta;
                   $nome = $rowCategoria->nomeCategoriaConta;
-                  echo <<<HTML
-                    <option value="{$rowCategoria->idCategoriaConta}">
-                      <i class='$rowCategoria->iconeCategoriaConta'></i> - {$nome}
-                    </option>
-                  HTML;
-                }
-              } else {
-                echo '<option>Nenhuma Categoria Cadastrada</option>';
-              }
               ?>
+                  <option value="<?php echo $rowCategoria->idCategoriaConta ?>">
+                    <i class="<?php $rowCategoria->iconeCategoriaConta ?>"></i>
+                    <?php echo $nome ?>
+                  </option>
+                <?php }
+              else : ?>
+                <option>Nenhuma Categoria Cadastrada</option>
+
+              <?php endif; ?>
             </select>
 
             <button class="btn btn-primary" type="button" onclick="location.href='?page=listarCategoria'">New</button>
