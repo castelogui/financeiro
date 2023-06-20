@@ -6,7 +6,7 @@ $theme = "<script>localStorage.getItem('theme')</script>";
 ?>
 
 <!DOCTYPE html>
-<html lang="pt-br" data-bs-theme="<?php echo $theme ?>">
+<html lang="pt-br" data-bs-theme="dark <?php $theme == "dark" ? "dark" : "light" ?>">
 
 <head>
   <meta charset="utf-8">
@@ -49,13 +49,15 @@ $theme = "<script>localStorage.getItem('theme')</script>";
         </div>
       </div>
   </nav>
-  <div class="container conteudo">
+  <div class="container">
     <div class="row">
       <div class="col mt-5">
-        <?php
-        include("./src/database/config.php");
-        include("./src/util/pages.php");
-        ?>
+        <div class="container-fuild">
+          <?php
+          include("./src/database/config.php");
+          include("./src/util/pages.php");
+          ?>
+        </div>
       </div>
     </div>
   </div>
