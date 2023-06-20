@@ -1,18 +1,13 @@
 <footer class="py-3 bg-body-tertiary">
-  <div class="container">
+  <div class="container mt-4">
     <div class="row">
       <div class="col-lg-6">
         <h5>Controle Financeiro</h5>
-        <p>Seu texto de descrição aqui.</p>
+        <p class="col-lg-6">Este sistema está sendo desenvolvido para proporcionar um controle financeiro eficiente e manter suas finanças sempre em ordem.</p>
       </div>
       <div class="col-lg-3">
         <h6>Links Úteis</h6>
-        <ul class="list-unstyled">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Sobre</a></li>
-          <li><a href="#">Serviços</a></li>
-          <li><a href="#">Contato</a></li>
-        </ul>
+        <?php include("./src/util/menu.php"); ?>
       </div>
       <div class="col-lg-3">
         <h6>Redes Sociais</h6>
