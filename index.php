@@ -23,52 +23,31 @@ $theme = "<script>localStorage.getItem('theme')</script>";
 <body>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a href="./index.php" class="navbar-brand">Controle Financeiro</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Alterna navegação">
+      <a href="./index.php" class="navbar-brand">
+        <!-- <img src="https://condomob.net/wp-content/uploads/2022/06/Otimizar-condominios-com-a-condomob.png" alt="Logo" width="30" class="d-inline-block align-text-top"> -->
+        <i class="fa-solid fa-coins me-2" style="color: #00b315;"></i>
+        Controle Financeiro
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <?php if (!empty($_SESSION)) : ?>
-            <li class="nav-item">
-              <a class="nav-link" href="?page=listarUsuario">Usuários</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="?page=listarConta">Contas</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Receitas</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Transações</a>
-            </li>
-          <?php endif; ?>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <?php if (empty($_SESSION)) : ?>
-            <a class="btn btn-success my-2 my-sm-0" onclick="location.href='?page=index';">Entrar</a>
-          <?php else : ?>
-            <div class="btn-group" role="group">
-              <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img src="../../assets/images/element/perfil-demo.svg" alt="image user" width="25" class="rounded mr-3">
-                <?php echo '@' . $_SESSION['username']; ?>
-              </button>
-              <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                <a class="dropdown-item" href="#">Meu Perfil</a>
-                <a class="dropdown-item" href="#">Definições</a>
-                <div class="container">
-                  <a class="btn btn-outline-danger btn-block my-2 my-sm-0" type="submit" onclick="location.href='?page=logout';">Sair</a>
-                </div>
-              </div>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <?php include("./src/util/menu.php"); ?>
+          <form class="d-flex">
+            <?php include("./src/util/controlSession.php"); ?>
+            <div class='switch mt-2 me-2'>
+              <input type='checkbox' id='toggle' name='status' class='switch-checkbox'>
+              <label for='toggle' class='switch-label'>
+              </label>
             </div>
-          <?php endif; ?>
-        </form>
-        <div class='switch'>
-          <input type='checkbox' id='toggle' name='status' class='switch-checkbox'>
-          <label for='toggle' class='switch-label'></label>
+          </form>
         </div>
       </div>
-    </div>
   </nav>
   <div class="container conteudo">
     <div class="row">
