@@ -11,6 +11,7 @@ $pages = [
   "listarCategoria" => "./src/conta/listaCategoria.php",
   "salvarConta" => "./src/conta/salvar.php",
   "editarConta" => "./src/conta/editConta.php",
+  "detalhesConta" => "./src/conta/detalhesConta.php",
 ];
 
 $page = @$_REQUEST["page"];
