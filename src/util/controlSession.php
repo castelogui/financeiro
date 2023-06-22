@@ -3,7 +3,7 @@
 <?php else : ?>
   <div class="btn-group me-3" role="group">
     <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <img src="../../assets/images/element/perfil-demo.svg" alt="image user" width="30" class="rounded mr-3">
+      <img src="../../assets/images/users-demo/<?php echo $_SESSION['id'] ?>.png" alt="image user" width="30" class="rounded mr-3">
       <?php echo '@' . $_SESSION['username']; ?>
     </button>
     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
