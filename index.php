@@ -36,7 +36,9 @@ $theme = "<script>localStorage.getItem('theme')</script>";
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-          <?php include("./src/util/menu.php"); ?>
+          <ul class="navbar-nav mr-auto mt-2">
+            <?php include("./src/util/menu.php"); ?>
+          </ul>
           <form class="d-flex">
             <?php include("./src/util/controlSession.php"); ?>
             <div class='switch mt-2 me-2'>
