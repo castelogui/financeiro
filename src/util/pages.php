@@ -8,10 +8,13 @@ $pages = [
   "login" => "./src/session/login.php",
   "logout" => "./src/session/logout.php",
   "listarConta" => "./src/conta/lista.php",
-  "listarCategoria" => "./src/conta/listaCategoria.php",
   "salvarConta" => "./src/conta/salvar.php",
   "editarConta" => "./src/conta/editConta.php",
   "detalhesConta" => "./src/conta/detalhesConta.php",
+  "cadastrarCategoria" => "./src/categoriaConta/cadastraCategoria.php",
+  "editarCategoria" => "./src/categoriaConta/editaCategoria.php",
+  "listarCategoria" => "./src/categoriaConta/listaCategoria.php",
+  "salvarCategoria" => "./src/categoriaConta/salvaCategoria.php",
 ];
 
 $page = @$_REQUEST["page"];
