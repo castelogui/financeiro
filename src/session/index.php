@@ -10,8 +10,8 @@ if ($_SESSION) {
       <div class="bg-mode shadow rounded-3 overflow-hidden">
         <div class="row g-0">
           <div class="col-lg-6 d-flex align-items-center order-2 order-lg-1">
-            <div class="p-2 p-lg-4">
-              <img src="assets/images/element/signin.svg" width="400px" alt="">
+            <div class="p-2 p-lg-5 me-5">
+              <img src="assets/images/element/signin.svg" width="400px" class="me-5" alt="">
             </div>
             <div class="vr opacity-1 d-none d-lg-block"></div>
           </div>
