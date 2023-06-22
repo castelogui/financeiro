@@ -28,9 +28,10 @@ include('src/database/querys.php');
 
 <style>
   .card:hover {
-    transform: scale(1.06);
+    transform: scale(1.04);
     box-shadow: 0 0 15px rgba(0, 0, 0, 1);
     transition: all 0.2s ease-in-out;
+    cursor: pointer;
   }
 </style>
 
@@ -43,7 +44,7 @@ include('src/database/querys.php');
       $saldoFormated = number_format($row->saldoConta, 2, ',', '.');
     ?>
       <div class="col card-group">
-        <div class="card btn btn-lg alert alert-<?php echo $cor ?>" onclick="location.href='?page=detalhesConta&idConta=<?php echo $row->idConta ?>'">
+        <div class="card text-center alert alert-<?php echo $cor ?>" onclick="location.href='?page=detalhesConta&idConta=<?php echo $row->idConta ?>'">
           <div class="card-body">
             <h4 class="card-title">
               <?php echo $row->nomeConta ?>
