@@ -16,7 +16,7 @@
   </div>
   <div class="col-2">
     <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#modalCadastrarCategoria">
-      <i class="fa-solid fa-plus"></i> Nova
+      <i class="fa-solid fa-plus"></i>Nova
     </button>
   </div>
 </div>
@@ -52,7 +52,7 @@ if ($qtdCategoria > 0) {
         <td><i class='{$rowCategoria->iconeCategoriaConta}'></i> - {$rowCategoria->nomeCategoriaConta}</td>
         <td>{$statusHTML}</td>
         <td>
-          <button data-toggle='modal' data-target='#modalEditarCategoria' class='btn btn-primary'>
+          <button class='btn btn-primary' onclick="location.href='?page=editarCategoria&idCategoriaConta={$rowCategoria->idCategoriaConta}'">
             <i class='fa-solid fa-pencil fa-fade'></i> Editar
           </button>
         </td>
@@ -107,8 +107,8 @@ if ($qtdCategoria > 0) {
               <option value="-" selected>---</option>
               <?php
               for ($i = 0; $i < 50; $i++) {
-                $icone = $icones[$i % count($icones)];
-                $palavras = explode("-", $icone);
+                $icone     = $icones[$i % count($icones)];
+                $palavras  = explode("-", $icone);
                 $nomeIcone = end($palavras);
                 echo "<option value=\"$icone\"><i class=\"$icone\"></i>" . ($i + 1) . " " . ucfirst($nomeIcone) . "</option>";
               }
@@ -125,51 +125,6 @@ if ($qtdCategoria > 0) {
   </div>
 </div>
 
-<!-- Modal Editar Categoria -->
-<div class="modal fade" id="modalEditarCategoria" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <form class="modal-content" action="?page=salvarConta" method="POST">
-      <div class="modal-header">
-        <h2 class="modal-title" id="TituloModalEditarCategoria">
-          Editar Categoria
-        </h2>
-        <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal" aria-label="Fechar">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <input type="hidden" name="acao" value="editarCategoria">
-        <div class="mb-3">
-          <label for="nomeCategoriaConta">Nome da Categoria</label>
-          <input type="text" name="nomeCategoriaConta" class="form-control" value="">
-        </div>
-        <div class="mb-3">
-          <label for="iconeCategoriaConta">Ícone</label>
-          <div class="input-group">
-            <span class="input-group-text" id="iconeSelecionado">
-              <i class="fas fa-plus"></i>
-            </span>
-            <select name="iconeCategoriaConta" class="form-select" onchange="atualizarIcone(this)">
-              <option value="-" selected>---</option>
-              <?php
-              for ($i = 0; $i < 50; $i++) {
-                $icone = $icones[$i % count($icones)];
-                $palavras = explode("-", $icone);
-                $nomeIcone = end($palavras);
-                echo "<option value=\"$icone\"><i class=\"$icone\"></i>" . ($i + 1) . " " . ucfirst($nomeIcone) . "</option>";
-              }
-              ?>
-            </select>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button type="submit" class="btn btn-success">Cadastrar</button>
-      </div>
-    </form>
-  </div>
-</div>
 <script>
   function atualizarIcone(selectElement) {
     var iconeSelecionadoElement = document.getElementById("iconeSelecionado");
