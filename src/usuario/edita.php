@@ -45,49 +45,52 @@ $row = $res->fetch_object();
       <input type="password" name="senha" class="form-control" required>
     </div>
   </div>
-  <div class="mb-3">
-    <div class="form-check form-check-reverse form-switch text-center">
-      <label for="senha">Status</label>
-      <input class="form-check-input btn btn-danger btn-block" name="status" <?php $row->statusUsuario == 1 ? print "checked" : "" ?> type="checkbox">
+  <div class="row">
+    <div class="col-md-2">
+      <button type="button" class="btn btn-secondary" onclick="location.href='?page=listarUsuario'">Cancelar</button>
+      <button type="submit" class="btn btn-success">Salvar</button>
     </div>
-  </div>
-  <div class="container ">
-    <div class="row justify-content-md-center">
-      <div class="col col-lg-2">
-        <button type="submit" class="btn btn-success">Salvar</button>
-      </div>
-      <!-- Botão para acionar modal -->
-      <div class='col col-lg-2'>
-        <button type='button' class='btn btn-danger' data-toggle='modal' data-target='#modalExcludeUser'>
-          Excluir
-        </button>
-      </div>
-      <!-- Modal -->
-      <div class="modal fade" id="modalExcludeUser" tabindex="-1" role="dialog" aria-labelledby="excludeUserModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="excludeUserModalLabel">Confirme</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <?php
-              print "Tem certeza que deseja excluir o usuário <strong>{$row->username}</strong>?";
-              print "<p>Essa ação é irreversível!!</p";
-              ?>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-              <?php
-              print "<button onclick=\"location.href='?page=salvarUsuario&acao=excluir&idUsuario={$row->idUsuario}';\"
-                      type='button' class='btn btn-danger'>Excluir</button>"
-              ?>
-            </div>
+    <div class='col-md-10'>
+      <div class="row">
+        <div class='col-md-6'>
+          <div class="form-check form-check-reverse form-switch">
+            <label for="senha">Status </label>
+            <input class="form-check-input btn btn-danger btn-block" name="status" <?php $row->statusUsuario == 1 ? print "checked" : "" ?> type="checkbox">
           </div>
+        </div>
+        <div class='col-md-6 text-right'>
+          <button type='button' class='btn btn-danger' data-toggle='modal' data-target='#modalExcludeUser'>
+            Excluir
+          </button>
         </div>
       </div>
     </div>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="modalExcludeUser" tabindex="-1" role="dialog" aria-labelledby="excludeUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="excludeUserModalLabel">Confirme</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <?php
+          print "Tem certeza que deseja excluir o usuário <strong>{$row->username}</strong>?";
+          print "<p>Essa ação é irreversível!!</p";
+          ?>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <?php
+          print "<button onclick=\"location.href='?page=salvarUsuario&acao=excluir&idUsuario={$row->idUsuario}';\"
+                      type='button' class='btn btn-danger'>Excluir</button>"
+          ?>
+        </div>
+      </div>
+    </div>
+  </div>
   </div>
 </form>
