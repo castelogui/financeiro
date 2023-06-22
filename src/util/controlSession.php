@@ -1,5 +1,7 @@
 <?php if (empty($_SESSION)) : ?>
-  <a class="btn btn-success me-3 my-sm-0" onclick="location.href='?page=index';">Entrar</a>
+  <div class="btn-group me-3" role="group">
+    <button class="btn btn-success me-3 my-sm-0" onclick="location.href='?page=index';">Entrar</button>
+  </div>
 <?php else : ?>
   <div class="btn-group me-3" role="group">
     <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
