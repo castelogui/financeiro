@@ -5,8 +5,8 @@ switch ($_REQUEST["acao"]) {
     $iconeCategoriaConta = $_POST["iconeCategoriaConta"];
     $statusCategoriaConta = 1;
 
-    $sql = "INSERT INTO `categoriaconta` (`idCategoriaConta`, `nomeCategoriaConta`, `iconeCategoriaConta`, `statusCategoriaConta`) 
-              VALUES (NULL, '{$nomeCategoriaConta}', '{$iconeCategoriaConta}', '{$statusCategoriaConta}')";
+    $sql = "INSERT INTO `categoriaconta` ( `nomeCategoriaConta`, `iconeCategoriaConta`, `statusCategoriaConta`) 
+              VALUES ('{$nomeCategoriaConta}', '{$iconeCategoriaConta}', '{$statusCategoriaConta}')";
 
     $res = $conn->query($sql) or die($conn->error);
 
@@ -35,7 +35,7 @@ switch ($_REQUEST["acao"]) {
 
     if ($res == true) {
       //print "<script>alert('Editado com sucesso!');</script>";
-      //print "<script>location.href='?page=listarCategoria';</script>";
+      print "<script>location.href='?page=listarCategoria';</script>";
     } else {
       print "<script>alert('Não foi possível editar!');</script>";
       print "<script>location.href='?page=listarCategoria';</script>";
