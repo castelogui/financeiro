@@ -48,7 +48,7 @@ $categoriaConta = getCategoriaContaById($_GET['idCategoriaConta'], $conn);
   </div>
   <div class="row">
     <div class="col-md-8 mb-3">
-      <button type="button" class="btn btn-secondary" onclick="location.href='?page=detalhesConta&idConta=<?php echo $categoriaConta->idCategoriaConta ?>'">Cancelar</button>
+      <button type="button" class="btn btn-secondary" onclick="location.href='?page=listarCategoria'">Cancelar</button>
       <button type="submit" class="btn btn-success">Cadastrar</button>
     </div>
     <div class="col-md-4 mb-3">
