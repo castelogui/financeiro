@@ -5,11 +5,12 @@ switch ($_REQUEST["acao"]) {
     $descricaoCategoriaRegistro = $_POST["descricaoCategoriaRegistro"];
     $iconeCategoriaRegistro     = $_POST["iconeCategoriaRegistro"];
     $corCategoriaRegistro       = $_POST["corCategoriaRegistro"];
+    $idCategoriaPai             = $_POST["idCategoriaPai"];
     $statusCategoriaRegistro    = $_POST["statusCategoriaRegistro"] == "on" ? 1 : 0;
     $permiteFilhos              = $_POST["permiteFilhos"] == "on" ? 1 : 0;
 
-    $sql = "INSERT INTO CategoriaRegistro (TipoRegistro_idTipoRegistro, descricaoCategoriaRegistro, iconeCategoriaRegistro, corCategoriaRegistro, statusCategoriaRegistro, permiteFilhos) 
-    VALUES ('$TipoRegistro_idTipoRegistro', '$descricaoCategoriaRegistro', '$iconeCategoriaRegistro', '$corCategoriaRegistro', '$statusCategoriaRegistro', '$permiteFilhos')";
+    $sql = "INSERT INTO CategoriaRegistro (TipoRegistro_idTipoRegistro, descricaoCategoriaRegistro, iconeCategoriaRegistro, corCategoriaRegistro, statusCategoriaRegistro, permiteFilhos, idCategoriaPai) 
+    VALUES ('$TipoRegistro_idTipoRegistro', '$descricaoCategoriaRegistro', '$iconeCategoriaRegistro', '$corCategoriaRegistro', '$statusCategoriaRegistro', '$permiteFilhos', '$idCategoriaPai')";
 
     $res = $conn->query($sql) or die($conn->error);
 
@@ -49,6 +50,6 @@ switch ($_REQUEST["acao"]) {
       print "<script>alert('Não foi possível editar!');</script>";
       print "<script>location.href='?page=listarCategoriaRegistro';</script>";
     }
-    
+
     break;
 }
