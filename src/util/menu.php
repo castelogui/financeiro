@@ -10,13 +10,13 @@
     </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">
-      <i class="fa-solid fa-file-invoice-dollar me-2"></i>Receitas
+    <a class="nav-link" href="?page=listarTransacoes">
+      <i class="fa-solid fa-file-invoice-dollar me-2"></i>Registros
     </a>
   </li>
-  <li class="nav-item">
+  <!-- <li class="nav-item">
     <a class="nav-link" href="#">
       <i class="fa-solid fa-dollar-sign me-2"></i>Transações
     </a>
-  </li>
+  </li> -->
 <?php endif; ?>
