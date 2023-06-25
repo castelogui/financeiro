@@ -53,3 +53,31 @@ function getCategoriaContaById($idCategoriaConta, $conn)
     return "Categoria não encontrada";
   }
 }
+
+function getCategoriaRegistroById($idCategoriaRegistro, $conn)
+{
+  $sql = "SELECT * FROM categoriaRegistro WHERE idCategoriaRegistro = {$idCategoriaRegistro}";
+  $res = $conn->query($sql) or die($conn->error);
+  $qtd = $res->num_rows;
+
+  if ($qtd > 0) {
+    $row = $res->fetch_object();
+    return $row;
+  } else {
+    return "Categoria não encontrada";
+  }
+}
+
+function getTipoRegistroById($idTipoRegistro, $conn)
+{
+  $sql = "SELECT * FROM tipoRegistro WHERE idTipoRegistro = {$idTipoRegistro}";
+  $res = $conn->query($sql) or die($conn->error);
+  $qtd = $res->num_rows;
+
+  if ($qtd > 0) {
+    $row = $res->fetch_object();
+    return $row;
+  } else {
+    return "Tipo de registro não encontrado";
+  }
+}
