@@ -8,7 +8,9 @@
         </div>
         <div class="col-lg-3">
           <h6>Links Úteis</h6>
-          <?php include("./src/util/menu.php"); ?>
+          <ul class="navbar-nav mr-auto mt-2">
+            <?php include("./src/util/menu.php"); ?>
+          </ul>
         </div>
         <div class="col-lg-3">
           <h6>Redes Sociais</h6>
