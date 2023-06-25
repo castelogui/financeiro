@@ -31,6 +31,7 @@ switch ($_REQUEST["acao"]) {
     $statusCategoriaRegistro    = $_POST["statusCategoriaRegistro"] == "on" ? 1 : 0;
     $permiteFilhos              = $_POST["permiteFilhos"] == "on" ? 1 : 0;
     $idCategoriaRegistro        = $_POST["idCategoriaRegistro"];
+    $idCategoriaPai             = $_POST["idCategoriaPai"];
 
     $sql = "UPDATE CategoriaRegistro 
             SET TipoRegistro_idTipoRegistro = '$TipoRegistro_idTipoRegistro', 
@@ -38,7 +39,8 @@ switch ($_REQUEST["acao"]) {
             iconeCategoriaRegistro = '$iconeCategoriaRegistro', 
             corCategoriaRegistro = '$corCategoriaRegistro', 
             statusCategoriaRegistro = '$statusCategoriaRegistro', 
-            permiteFilhos = '$permiteFilhos' 
+            permiteFilhos = '$permiteFilhos',
+            idCategoriaPai = '$idCategoriaPai'
             WHERE idCategoriaRegistro = '$idCategoriaRegistro'";
 
     $res = $conn->query($sql) or die($conn->error);
