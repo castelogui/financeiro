@@ -15,6 +15,14 @@ $pages = [
   "editarCategoria" => "./src/categoriaConta/editaCategoria.php",
   "listarCategoria" => "./src/categoriaConta/listaCategoria.php",
   "salvarCategoria" => "./src/categoriaConta/salvaCategoria.php",
+  "cadastrarTransacao" => "./src/registro/transacao/cadastraTransacao.php",
+  "editarTransacao" => "./src/registro/transacao/editaTransacao.php",
+  "listarTransacoes" => "./src/registro/transacao/listaTransacoes.php",
+  "salvarTransacao" => "./src/registro/transacao/salvaTransacao.php",
+  "cadastrarCategoriaRegistro" => "./src/registro/categoria/cadastraCategoriaRegistro.php",
+  "editarCategoriaRegistro" => "./src/registro/categoria/editaCategoriaRegistro.php",
+  "listarCategoriaRegistro" => "./src/registro/categoria/listaCategoriaRegistro.php",
+  "salvarCategoriaRegistro" => "./src/registro/categoria/salvaCategoriaRegistro.php",
 ];
 
 $page = @$_REQUEST["page"];
