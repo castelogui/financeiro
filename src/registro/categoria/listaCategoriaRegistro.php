@@ -63,14 +63,14 @@ if ($qtdCategoriaRegistro > 0) {
             {$tipoRegistroAtual->descricaoTipoRegistro}
           </span>
         </td>
-        <td>
+        <td class="text-left">
           <i class="<?php echo $rowCategoriaRegistro->iconeCategoriaRegistro ?>"></i>
-           {$rowCategoriaRegistro->descricaoCategoriaRegistro}
+          {$rowCategoriaRegistro->descricaoCategoriaRegistro}
         </td>
         <td>{$statusHTML}</td>
         <td>{$rowCategoriaRegistro->permiteFilhos}</td>
         <td>
-          <button class='btn btn-sm btn-primary' onclick="location.href='?page=editarCategoria&idCategoriaConta={$rowCategoriaRegistro->idCategoriaRegistro}'">
+          <button class='btn btn-sm btn-primary' onclick="location.href='?page=editarCategoriaRegistro&idCategoriaRegistro={$rowCategoriaRegistro->idCategoriaRegistro}'">
             <i class='fa-solid fa-pencil fa-fade'></i> Editar
           </button>
         </td>
