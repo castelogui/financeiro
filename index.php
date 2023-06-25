@@ -56,6 +56,7 @@ $theme = "<script>localStorage.getItem('theme')</script>";
         <div class="container-fuild">
           <?php
           include("./src/database/config.php");
+          include('src/database/querys.php');
           include("./src/util/pages.php");
           ?>
         </div>

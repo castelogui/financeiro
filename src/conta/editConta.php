@@ -1,5 +1,4 @@
 <?php
-include('src/database/querys.php');
 $conta = getContaById($_GET['idConta'], $conn);
 $usuario = getUserById($conta->Usuario_idUsuario, $conn);
 $categoriaConta = getCategoriaContaById($conta->CategoriaConta_idCategoriaConta, $conn);

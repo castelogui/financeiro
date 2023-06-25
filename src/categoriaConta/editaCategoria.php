@@ -1,5 +1,4 @@
 <?php
-include('src/database/querys.php');
 include("./src/util/icones.php");
 $categoriaConta = getCategoriaContaById($_GET['idCategoriaConta'], $conn);
 ?>

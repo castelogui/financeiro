@@ -22,10 +22,6 @@
 </div>
 <br>
 
-<?php
-include('src/database/querys.php');
-?>
-
 <style>
   .card:hover {
     transform: scale(1.04);
