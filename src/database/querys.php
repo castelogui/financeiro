@@ -81,3 +81,14 @@ function getTipoRegistroById($idTipoRegistro, $conn)
     return "Tipo de registro não encontrado";
   }
 }
+
+function getCategoriaRegistroPai($conn)
+{
+  $sql = "SELECT * FROM categoriaRegistro where permiteFilhos = 1";
+  $res = $conn->query($sql) or die($conn->error);
+  $qtd = $res->num_rows;
+
+  if ($qtd > 0) {
+    return $res;
+  }
+}
