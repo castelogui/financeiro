@@ -1,7 +1,7 @@
 <?php
 define("HOST", '127.0.0.1');
 define("USER", 'root');
-define("PASS", '');
+define("PASS", 'root');
 define("BASE", 'financeiro');
 
 $conn = new Mysqli(HOST, USER, PASS, BASE);
