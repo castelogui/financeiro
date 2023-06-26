@@ -1,8 +1,93 @@
-# CRUD PHP + MYSQL
+<div align="center">
 
-Sistema financeiro familiar
+# Sistema Financeiro 	
+</div>
 
-----
+<p align="center">
+
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/castelogui/login?color=%2304D361">
+
+  <a href="https://github.com/castelogui/login/blob/master/LICENSE">
+    <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
+  </a>
+	
+  <a href="https://www.linkedin.com/in/castelo-guilherme/">
+    <img alt="Made by castelogui" src="https://img.shields.io/badge/made%20by-castelogui-%2304D361">
+  </a>
+
+  <a href="https://github.com/castelogui/login/commits/master">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/castelogui/next-level-week">
+  </a>
+
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/castelogui/login">
+
+</p>
+
+<p align="center">
+  
+  <a href="https://github.com/castelogui/login/stargazers">
+    <img alt="Stargazers" src="https://img.shields.io/github/stars/castelogui/login?style=social">
+  </a>
+  
+  <a href="https://github.com/castelogui/login/watchers">
+    <img alt="Watchers" src="https://img.shields.io/github/watchers/castelogui/login?style=social">
+  </a>
+  
+  <a href="https://github.com/castelogui/login/network/members">
+    <img alt="Forks" src="https://img.shields.io/github/forks/castelogui/login?style=social">
+  </a>
+  
+  <a href="https://github.com/castelogui/login/issues">
+    <img alt="Issues" src="https://img.shields.io/github/issues/castelogui/login?style=social">
+  </a>
+  
+  <a href="https://github.com/castelogui/login/contributors">
+    <img alt="Contributors" src="https://img.shields.io/github/contributors/castelogui/login?style=social">
+  </a>	
+</p>
+
+## Imagens
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+<div id="carouselExampleCaptions" class="carousel slide">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="./assets/images/project/categorias_contas_create.png" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>First slide label</h5>
+        <p>Some representative placeholder content for the first slide.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="./assets/images/project/categorias_contas_list.png" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Second slide label</h5>
+        <p>Some representative placeholder content for the second slide.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="./assets/images/project/categorias_contas_edit.png" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Third slide label</h5>
+        <p>Some representative placeholder content for the third slide.</p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
 
 ## O sistema deverá ter as seguintes funcionalidades:
 
