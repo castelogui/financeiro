@@ -25,6 +25,19 @@ function getContaById($idConta, $conn)
   }
 }
 
+function getContas($conn)
+{
+  $sql = "SELECT * FROM conta";
+  $res = $conn->query($sql) or die($conn->error);
+  $qtd = $res->num_rows;
+
+  if ($qtd > 0) {
+    return $res;
+  } else {
+    return "Nenhuma conta encontrada";
+  }
+}
+
 
 function getUserById($idUsuario, $conn)
 {
@@ -37,6 +50,19 @@ function getUserById($idUsuario, $conn)
     return $row;
   } else {
     return "Usuário não encontrado";
+  }
+}
+
+function getUsuarios($conn)
+{
+  $sql = "SELECT * FROM usuario";
+  $res = $conn->query($sql) or die($conn->error);
+  $qtd = $res->num_rows;
+
+  if ($qtd > 0) {
+    return $res;
+  } else {
+    return "Nenhum usuário encontrado";
   }
 }
 
@@ -68,6 +94,19 @@ function getCategoriaRegistroById($idCategoriaRegistro, $conn)
   }
 }
 
+function getCategoriasRegistro($conn)
+{
+  $sql = "SELECT * FROM categoriaRegistro";
+  $res = $conn->query($sql) or die($conn->error);
+  $qtd = $res->num_rows;
+
+  if ($qtd > 0) {
+    return $res;
+  } else {
+    return "Nenhuma categoria encontrada";
+  }
+}
+
 function getTipoRegistroById($idTipoRegistro, $conn)
 {
   $sql = "SELECT * FROM tipoRegistro WHERE idTipoRegistro = {$idTipoRegistro}";
@@ -90,5 +129,18 @@ function getCategoriaRegistroPai($conn)
 
   if ($qtd > 0) {
     return $res;
+  }
+}
+
+function getTransations($conn)
+{
+  $sql = "SELECT * FROM registro";
+  $res = $conn->query($sql) or die($conn->error);
+  $qtd = $res->num_rows;
+
+  if ($qtd > 0) {
+    return $res;
+  } else {
+    return 0;
   }
 }
