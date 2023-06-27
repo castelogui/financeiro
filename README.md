@@ -101,7 +101,6 @@ O projeto consiste em um sistema financeiro para controle de gastos pessoais, on
 ### Pré-requisitos
 - [Git](https://git-scm.com/)
 - [WampServer](https://www.wampserver.com/en/)
-- [Composer](https://getcomposer.org/)
 - [PHP v 8.0.26](https://www.php.net/)
 - [MySQL v 8.0.31](https://www.mysql.com/)
 - [VSCode](https://code.visualstudio.com/)
