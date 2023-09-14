@@ -5,7 +5,7 @@ switch ($_REQUEST["acao"]) {
     $iconeCategoriaConta = $_POST["iconeCategoriaConta"];
     $statusCategoriaConta = 1;
 
-    $sql = "INSERT INTO `categoriaconta` ( `nomeCategoriaConta`, `iconeCategoriaConta`, `statusCategoriaConta`) 
+    $sql = "INSERT INTO `categoriaConta` ( `nomeCategoriaConta`, `iconeCategoriaConta`, `statusCategoriaConta`) 
               VALUES ('{$nomeCategoriaConta}', '{$iconeCategoriaConta}', '{$statusCategoriaConta}')";
 
     $res = $conn->query($sql) or die($conn->error);
@@ -25,11 +25,11 @@ switch ($_REQUEST["acao"]) {
     $iconeCategoriaConta = $_POST["iconeCategoriaConta"];
     $statusCategoriaConta = $_POST["statusCategoriaConta"] == "on" ? 1 : 0;
 
-    $sql = "UPDATE `categoriaconta` 
+    $sql = "UPDATE `categoriaConta` 
             SET `nomeCategoriaConta` = '{$nomeCategoriaConta}', 
             `iconeCategoriaConta` = '{$iconeCategoriaConta}',
             `statusCategoriaConta` = '{$statusCategoriaConta}' 
-            WHERE `categoriaconta`.`idCategoriaConta` = {$idCategoriaConta}";
+            WHERE `categoriaConta`.`idCategoriaConta` = {$idCategoriaConta}";
 
     $res = $conn->query($sql) or die($conn->error);
 

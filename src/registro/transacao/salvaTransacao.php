@@ -11,7 +11,7 @@ switch ($_REQUEST["acao"]) {
     $Conta_idConta = $_REQUEST["Conta_idConta"];
     $statusRegistro = $_REQUEST["statusRegistro"];
 
-    $sql = "INSERT INTO Registro (TipoRegistro_idTipoRegistro, 
+    $sql = "INSERT INTO registro (TipoRegistro_idTipoRegistro, 
                                   valorRegistro, 
                                   dataRegistro,
                                   horaRegistro, 

@@ -7,10 +7,6 @@
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.0.26
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -27,20 +23,20 @@ SET time_zone = "+00:00";
 -- Estrutura da tabela `categoriaconta`
 --
 
-DROP TABLE IF EXISTS `categoriaconta`;
-CREATE TABLE IF NOT EXISTS `categoriaconta` (
+DROP TABLE IF EXISTS `categoriaConta`;
+CREATE TABLE IF NOT EXISTS `categoriaConta` (
   `idCategoriaConta` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `nomeCategoriaConta` varchar(255) DEFAULT NULL,
   `iconeCategoriaConta` varchar(255) DEFAULT NULL,
   `statusCategoriaConta` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`idCategoriaConta`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Extraindo dados da tabela `categoriaconta`
 --
 
-INSERT INTO `categoriaconta` (`idCategoriaConta`, `nomeCategoriaConta`, `iconeCategoriaConta`, `statusCategoriaConta`) VALUES
+INSERT INTO `categoriaConta` (`idCategoriaConta`, `nomeCategoriaConta`, `iconeCategoriaConta`, `statusCategoriaConta`) VALUES
 (1, 'Carro', 'fas fa-car', 1),
 (8, 'Café', 'fas fa-coffee', 1),
 (3, 'Clima', 'fas fa-cloud', 1),
@@ -59,8 +55,8 @@ INSERT INTO `categoriaconta` (`idCategoriaConta`, `nomeCategoriaConta`, `iconeCa
 -- Estrutura da tabela `categoriaregistro`
 --
 
-DROP TABLE IF EXISTS `categoriaregistro`;
-CREATE TABLE IF NOT EXISTS `categoriaregistro` (
+DROP TABLE IF EXISTS `categoriaRegistro`;
+CREATE TABLE IF NOT EXISTS `categoriaRegistro` (
   `idCategoriaRegistro` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `TipoRegistro_idTipoRegistro` int UNSIGNED NOT NULL,
   `descricaoCategoriaRegistro` varchar(255) DEFAULT NULL,
@@ -71,13 +67,13 @@ CREATE TABLE IF NOT EXISTS `categoriaregistro` (
   `idCategoriaPai` int NOT NULL,
   PRIMARY KEY (`idCategoriaRegistro`),
   KEY `CategoriaRegistro_FKIndex1` (`TipoRegistro_idTipoRegistro`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Extraindo dados da tabela `categoriaregistro`
 --
 
-INSERT INTO `categoriaregistro` (`idCategoriaRegistro`, `TipoRegistro_idTipoRegistro`, `descricaoCategoriaRegistro`, `iconeCategoriaRegistro`, `corCategoriaRegistro`, `statusCategoriaRegistro`, `permiteFilhos`, `idCategoriaPai`) VALUES
+INSERT INTO `categoriaRegistro` (`idCategoriaRegistro`, `TipoRegistro_idTipoRegistro`, `descricaoCategoriaRegistro`, `iconeCategoriaRegistro`, `corCategoriaRegistro`, `statusCategoriaRegistro`, `permiteFilhos`, `idCategoriaPai`) VALUES
 (1, 2, 'Categoria 1 Teste', 'fas fa-laptop', 'success', 0, 1, 0),
 (2, 1, 'Salario', 'fas fa-wrench', 'danger', 0, 1, 0),
 (3, 2, 'Moto', 'fas fa-car', 'warning', 0, 0, 0),
@@ -102,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `conta` (
   PRIMARY KEY (`idConta`),
   KEY `Conta_FKIndex1` (`Usuario_idUsuario`),
   KEY `Conta_FKIndex2` (`CategoriaConta_idCategoriaConta`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Extraindo dados da tabela `conta`
@@ -124,7 +120,7 @@ INSERT INTO `conta` (`idConta`, `CategoriaConta_idCategoriaConta`, `Usuario_idUs
 -- Estrutura da tabela `registro`
 --
 
-DROP TABLE IF EXISTS `registro`;
+DROP TABLE IF EXISTS `Registro`;
 CREATE TABLE IF NOT EXISTS `registro` (
   `idRegistro` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `Usuario_idUsuario` int UNSIGNED NOT NULL,
@@ -141,7 +137,7 @@ CREATE TABLE IF NOT EXISTS `registro` (
   KEY `Registro_FKIndex2` (`Conta_idConta`),
   KEY `Registro_FKIndex3` (`CategoriaRegistro_idCategoriaRegistro`),
   KEY `Registro_FKIndex4` (`Usuario_idUsuario`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Extraindo dados da tabela `registro`
@@ -161,19 +157,19 @@ INSERT INTO `registro` (`idRegistro`, `Usuario_idUsuario`, `CategoriaRegistro_id
 -- Estrutura da tabela `tiporegistro`
 --
 
-DROP TABLE IF EXISTS `tiporegistro`;
-CREATE TABLE IF NOT EXISTS `tiporegistro` (
+DROP TABLE IF EXISTS `tipoRegistro`;
+CREATE TABLE IF NOT EXISTS `tipoRegistro` (
   `idTipoRegistro` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `descricaoTipoRegistro` varchar(255) DEFAULT NULL,
   `statusTipoRegistro` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`idTipoRegistro`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Extraindo dados da tabela `tiporegistro`
 --
 
-INSERT INTO `tiporegistro` (`idTipoRegistro`, `descricaoTipoRegistro`, `statusTipoRegistro`) VALUES
+INSERT INTO `tipoRegistro` (`idTipoRegistro`, `descricaoTipoRegistro`, `statusTipoRegistro`) VALUES
 (1, 'Receita', 1),
 (2, 'Despesa', 1);
 
@@ -194,17 +190,14 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `senhaUsuario` varchar(255) DEFAULT NULL,
   `statusUsuario` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`idUsuario`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 --
 -- Extraindo dados da tabela `usuario`
 --
 
 INSERT INTO `usuario` (`idUsuario`, `nomeUsuario`, `sobrenomeUsuario`, `dtNascUsuario`, `username`, `emailUsuario`, `senhaUsuario`, `statusUsuario`) VALUES
-(1, 'root', 'admin', '2000-01-01', 'root', 'root@root.com', 'root', 1),
-(2, 'Guilherme ', 'Castelo', '1999-09-19', 'castelogui', 'guilhermecastelo.mail@gmail.com', '12345', 0),
-(3, 'Ritielen', 'Tobias', '2001-06-14', 'ritielentobias', 'ritielentobias7@gmail.com', '123', 1),
-(4, 'Samuel', 'Matos Silva', '1973-04-06', 'samuca', 'samuelmatossilva1969@gmail.com', '12345', 0);
+(1, 'root', 'admin', '2000-01-01', 'root', 'root@root.com', 'root', 1);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

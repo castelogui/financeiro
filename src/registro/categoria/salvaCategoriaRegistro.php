@@ -9,7 +9,7 @@ switch ($_REQUEST["acao"]) {
     $statusCategoriaRegistro    = $_POST["statusCategoriaRegistro"] == "on" ? 1 : 0;
     $permiteFilhos              = $_POST["permiteFilhos"] == "on" ? 1 : 0;
 
-    $sql = "INSERT INTO CategoriaRegistro (TipoRegistro_idTipoRegistro, descricaoCategoriaRegistro, iconeCategoriaRegistro, corCategoriaRegistro, statusCategoriaRegistro, permiteFilhos, idCategoriaPai) 
+    $sql = "INSERT INTO categoriaRegistro (TipoRegistro_idTipoRegistro, descricaoCategoriaRegistro, iconeCategoriaRegistro, corCategoriaRegistro, statusCategoriaRegistro, permiteFilhos, idCategoriaPai) 
     VALUES ('$TipoRegistro_idTipoRegistro', '$descricaoCategoriaRegistro', '$iconeCategoriaRegistro', '$corCategoriaRegistro', '$statusCategoriaRegistro', '$permiteFilhos', '$idCategoriaPai')";
 
     $res = $conn->query($sql) or die($conn->error);
@@ -33,7 +33,7 @@ switch ($_REQUEST["acao"]) {
     $idCategoriaRegistro        = $_POST["idCategoriaRegistro"];
     $idCategoriaPai             = $_POST["idCategoriaPai"];
 
-    $sql = "UPDATE CategoriaRegistro 
+    $sql = "UPDATE categoriaRegistro 
             SET TipoRegistro_idTipoRegistro = '$TipoRegistro_idTipoRegistro', 
             descricaoCategoriaRegistro = '$descricaoCategoriaRegistro', 
             iconeCategoriaRegistro = '$iconeCategoriaRegistro', 
